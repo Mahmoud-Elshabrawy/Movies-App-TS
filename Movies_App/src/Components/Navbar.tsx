@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import '../styles/Nav.css';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
 
 const Navbar = () => {
 const [isOpen, setIsOpen] = useState(false);

@@ -9,7 +9,7 @@ import Navbar from './Components/Navbar'
 function App() {
 
   return (
-    <div className=' gap-30'>
+    <div className=' gap-30 overflow-x-hidden'>
       <Router>
         <div className=''>
           <Navbar/>
