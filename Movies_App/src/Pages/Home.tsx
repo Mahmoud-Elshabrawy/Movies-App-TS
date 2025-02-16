@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { trendingTv, trending, apiKey } from "../Modules/API";
 import axios from "axios";
-import DisplayItems from "../Components/DisplayItems";
 import Poster from "../Components/Poster";
+import MyCarousel from "../Utilities/MyCarousel";
 
 const Home = () => {
 const [movies, setMovies] = useState([]);
@@ -36,8 +36,9 @@ useEffect(() => {
 
 return (
     <div>
-         <Poster  /> 
-    <DisplayItems movie={movies} show={show} />
+    <Poster  /> 
+    <MyCarousel movie={movies}  />
+    <MyCarousel movie={show} />
     </div>
 );
 };
