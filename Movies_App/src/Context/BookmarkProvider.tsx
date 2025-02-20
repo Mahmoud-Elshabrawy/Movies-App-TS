@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 
 export const BookmarkContext = createContext({} as BookmarkOperations)
 
@@ -28,9 +29,20 @@ const BookmarkProvider = ({children}: ChildrenProps) => {
 
   const addToBookmark = (item: Item) => {
     // check if the item is already exists
-    if(bookmarks.includes(item)) return
+    if(bookmarks.includes(item)) {
+      Swal.fire({
+        title: `${(item.name || item.title)} is already added to Bookmarks`,
+        icon: "info",
+        draggable: true
+      });
+    } 
     else {
       // add the id to the bookmarks and update local storage
+      Swal.fire({
+        title: `${(item.name || item.title)} is added to Bookmarks`,
+        icon: "success",
+        draggable: true
+      });
       setBookmarks((prev) => {
         return [...prev, item]
       })
@@ -41,6 +53,11 @@ const BookmarkProvider = ({children}: ChildrenProps) => {
     // this function will be inside only bookmarks page so the id is already exists
     const newBookmarks = bookmarks.filter(x => x.id !== item.id)
     setBookmarks(newBookmarks)
+    Swal.fire({
+      title: `${(item.name || item.title)} has been removed from Bookmarks`,
+      icon: "warning",
+      draggable: true
+    });
 
   }
 

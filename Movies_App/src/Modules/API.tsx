@@ -3,10 +3,10 @@
 export const apiKey = "ae80d73c7502091cf2ec432b7a4594fb"
 
 export const trending = "https://api.themoviedb.org/3/trending/movie/week"
-export const upComing = "https://api.themoviedb.org/3/discover/movie/upcoming"
-export const nowPlaying = "https://api.themoviedb.org/3/discover/movie/now_playing"
-export const topRated = "https://api.themoviedb.org/3/discover/movie/top_rated"
-export const popular = "https://api.themoviedb.org/3/discover/movie/popular"
+export const upComing = "https://api.themoviedb.org/3/movie/upcoming"
+export const nowPlaying = "https://api.themoviedb.org/3/movie/now_playing"
+export const topRated = "https://api.themoviedb.org/3/movie/top_rated"
+export const popular = "https://api.themoviedb.org/3/movie/popular"
 
 
 export const trendingTv = "https://api.themoviedb.org/3/trending/tv/week"

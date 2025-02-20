@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { imgBaseUrl } from '../Modules/API';
 import { BookmarkContext } from '../Context/BookmarkProvider';
+import { Link } from 'react-router-dom';
 
 type Movie = {
     id: number;
@@ -13,14 +14,13 @@ type Movie = {
     };
     
     type Props = {
-    movie: Movie[];
+    movie: Movie[],
     };
     
 
     const DisplayItems = ({ movie}: Props) => {
         const { addToBookmark } = useContext(BookmarkContext);
         const [hoveredId, setHoveredId] = useState<number | null>(null);
-  
     
         return (
             <div className="">
@@ -28,7 +28,7 @@ type Movie = {
     
                 {movie.map((item) => (
                     <div 
-                        key={item.id}
+                        key={item.id} 
                         className={`flex relative mx-6 rounded-2xl overflow-hidden transition-all duration-500 ease-in-out 
                         ${hoveredId === item.id ? 'bg-gray-900 bg-opacity-90 shadow-2xl scale-105' : 'bg-gray-800 bg-opacity-80'}
                     `}
@@ -62,10 +62,11 @@ type Movie = {
                             bg-gray-900 bg-opacity-70 rounded-lg backdrop-blur-lg 
                             transition-all duration-500 ease-in-out transform hover:scale-105"
                             >
+                                <Link to={`${!item.first_air_date  ? `/movies/${item.id}` : `/tv/${item.id}`}`} >
                                 <button className="text-white text-lg p-3 rounded-full cursor-pointer 
                             hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
                                     <i className="fa-solid fa-eye"></i>
-                                </button>
+                                </button> </Link>
                                 <button className="text-white text-lg p-3  cursor-pointer
                             hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110" onClick={() => addToBookmark(item)}>
                                     <i className="fa-regular fa-bookmark"></i>

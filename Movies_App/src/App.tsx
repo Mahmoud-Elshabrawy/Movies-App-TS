@@ -8,6 +8,7 @@ import Search from "./Components/Search";
 import Navbar from "./Components/Navbar";
 import { SearchProvider } from "./Context/SearchProvider"; 
 import BookmarkProvider from "./Context/BookmarkProvider";
+import ItemDetails from "./Pages/ItemDetails";
 function App() {
   return (
     <Router>
@@ -16,13 +17,17 @@ function App() {
         <div>
           <Navbar />
         </div>
-        <div className="flex flex-col flex-grow mt-10">
+        <div className="flex flex-col flex-grow my-10 ">
           <Search />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/tv" element={<TvSeries />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/movies/:id" element= {<ItemDetails/>} />
+            <Route path="/tv/:id" element= {<ItemDetails/>} />
+
+            
           </Routes>
         </div>
         </BookmarkProvider>
