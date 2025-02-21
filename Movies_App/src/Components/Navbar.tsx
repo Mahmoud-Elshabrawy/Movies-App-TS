@@ -16,7 +16,7 @@ useEffect(() => {
 }, [])
 
 return (
-    <div data-aos = "fade-down" className={` flex flex-col md:flex-row items-center justify-between bg-gray-900 p-4 rounded-2xl shadow-white`}>      <div className="flex items-center justify-between w-full md:w-auto">
+    <div data-aos = "fade-down" className={` flex flex-col md:flex-row items-center justify-between bg-gray-900 p-4 rounded-b-4xl shadow-white`}>      <div className="flex items-center justify-between w-full md:w-auto">
         <div className="flex items-center">
         <img src={logo} alt="Movie App Logo" className="h-10 w-10 mr-2" />
         <h1 className="text-white text-xl tracking-wider font-bold">Movie App</h1>

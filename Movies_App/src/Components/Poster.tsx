@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import img1 from '../assets/thirdjpg.jpg';
 import img2 from '../assets/first.jpg';
 import img3 from '../assets/second.jpg';
@@ -18,27 +18,20 @@ const Poster = () => {
     setImgIdx((prev) => (prev === 0 ? imgs.length - 1 : prev - 1));
   };
 
+
   return (
     <div className="w-full flex justify-center items-center mb-40 relative">
-      <img
-        className={`w-[90%]  rounded-2xl shadow-lg`} src={imgs[imgIdx]} style={{objectFit: 'cover'}} alt="Poster"
-      />
-
-      <div className="absolute inset-0 flex items-center justify-between px-4">
-        <button onClick={handlePrev} aria-label="Previous"
-          className=""
-        >
-          <i
-            className="fa-solid fa-chevron-left cursor-pointer" style={{ fontSize: "2.5rem" }}></i>
+      <button onClick={handlePrev} aria-label="Previous">
+        <i className="fa-solid fa-chevron-left cursor-pointer" style={{ fontSize: "2rem" }}></i>
         </button>
-        <button onClick={handleNext} aria-label="Next"
-          className=""
-        >
-          <i
-            className="fa-solid fa-chevron-right cursor-pointer" style={{ fontSize: "2.5rem" }}
+
+      <img
+        className={`w-[55%] rounded-2xl shadow-lg`}  src={imgs[imgIdx]} style={{objectFit: 'cover'}} alt="Poster"
+      />
+      <button onClick={handleNext} aria-label="Next">
+          <i className="fa-solid fa-chevron-right cursor-pointer" style={{ fontSize: "2rem" }}
           ></i>
         </button>
-      </div>
     </div>
   );
 };
