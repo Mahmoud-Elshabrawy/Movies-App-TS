@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { trendingTv, trending, apiKey } from "../Modules/API";
 import axios from "axios";
-import Poster from "../Components/Poster";
 import Carousel from "../Utilities/Carousel";
+import Poster from "../Components/Poster";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -36,6 +37,10 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+      <title>Movie App</title>
+      <meta name="description" content="Explore and watch the best movies with our movie app!" />
+      </Helmet>
       <Poster />
       <Carousel movie={movies} title="Trending Movies" type = {'/movies'} />
       <Carousel movie={show} title ="Trending TV Show" type = {'/tv'} />

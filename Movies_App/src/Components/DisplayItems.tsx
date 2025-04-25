@@ -64,11 +64,13 @@ type Movie = {
                             >
                                 <Link to={`${!item.first_air_date  ? `/movies/${item.id}` : `/tv/${item.id}`}`} >
                                 <button className="text-white text-lg p-3 rounded-full cursor-pointer 
-                            hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
+                            hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                            aria-label={`View details of ${item.name || item.title}`}>
                                     <i className="fa-solid fa-eye"></i>
                                 </button> </Link>
                                 <button className="text-white text-lg p-3  cursor-pointer
-                            hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110" onClick={() => addToBookmark(item)}>
+                            hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                            aria-label={`Bookmark ${item.name || item.title}`} onClick={() => addToBookmark(item)}>
                                     <i className="fa-regular fa-bookmark"></i>
                                 </button>
                             </div>

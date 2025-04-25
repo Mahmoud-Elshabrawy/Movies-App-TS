@@ -1,13 +1,16 @@
 import { useContext, useState } from 'react';
 import { BookmarkContext } from '../Context/BookmarkProvider';
 import { imgBaseUrl } from '../Modules/API';
-
+import { Helmet } from 'react-helmet-async';
 const Bookmarks = () => {
   const { bookmarks, removeFromBookmark } = useContext(BookmarkContext);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
     <div className="p-6">
+        <Helmet>
+        <title>Bookmarks</title>
+        <meta name="description" content="View and manage your bookmarked movies and TV shows. Keep track of your favorite content easily!" />      </Helmet>
       <h1 className="text-3xl text-center font-bold mb-6 text-white">Your Bookmarks</h1>
 
       {bookmarks.length > 0 ? (

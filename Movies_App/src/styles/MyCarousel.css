@@ -18,3 +18,7 @@
 .style:hover::after {
     width: 100%;
 }
+
+body.light .style::after {
+    background-color: #000 !important;
+}

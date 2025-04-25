@@ -9,6 +9,7 @@ import {
 } from "../Modules/API";
 import axios from "axios";
 import Carousel from "../Utilities/Carousel";
+import { Helmet } from 'react-helmet-async';
 
 const Movies = () => {
   const [movies, setMovies] = useState({
@@ -53,6 +54,10 @@ const Movies = () => {
 
   return (
     <div>
+      <Helmet>
+      <title>Movies</title>
+      <meta name="description" content="Discover trending, popular, and top-rated movies. Watch trailers and explore upcoming releases." />
+      </Helmet>
       <Carousel movie={movies.trending || []} title="Trending Movies" />
       <Carousel movie={movies.popular || []} title="Popular Movies" />
       <Carousel movie={movies.topRated || []} title="Top Rated Movies" />

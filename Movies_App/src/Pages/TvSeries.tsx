@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { trendingTv, popularTv, topRatedTv, onTheAir, apiKey } from '../Modules/API'
 import axios from 'axios'
 import Carousel from '../Utilities/Carousel'
+import { Helmet } from 'react-helmet-async';
+
 const TvSeries = () => {
 
   const [tvSeries, setTvSeries] = useState({
@@ -44,6 +46,10 @@ const TvSeries = () => {
   
   return (
     <div>
+      <Helmet>
+      <title>Shows</title>
+      <meta name="description" content="Discover trending, popular, and top-rated Shows. Watch trailers and explore upcoming releases." />
+      </Helmet>
       <Carousel movie={tvSeries.trendingTv || []} title={"Trending"} />
       <Carousel movie={tvSeries.popularTv || []} title={"Popular"} />
       <Carousel movie={tvSeries.topRatedTv || []} title={"Top Rated"} />

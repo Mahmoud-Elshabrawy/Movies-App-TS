@@ -2,7 +2,10 @@ import { ChangeEvent, useContext, useState } from "react";
 import { SearchContext } from "../Context/SearchProvider";
 import { imgBaseUrl } from "../Modules/API";
 import { BookmarkContext } from "../Context/BookmarkProvider";
+import { useNavigate } from "react-router-dom";
 const Search = () => {
+  const navigate = useNavigate()
+
   const { query, setQuery, filterItems } = useContext(SearchContext);
    const { addToBookmark } = useContext(BookmarkContext);
           const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -10,18 +13,22 @@ const Search = () => {
     setQuery(e.target.value);
   };
 
+  const handleItemClick = (item: any) => {
+    setQuery("")
+    navigate(`/${item.title ? "movies" : "tv"}/${item.id}`);
+  }
   return (
     <>
-      <div className="mb-7 w-full flex justify-center">
+      <div className="my-7 w-full  flex justify-center">
         <form
           action=""
           onSubmit={(e) => e.preventDefault()}
-          className="flex items-center w-full max-w-md bg-gray-800 rounded-2xl shadow-md px-4 py-2"
+          className=" search flex items-center w-[70%] max-w-md bg-gray-800 rounded-2xl shadow-md px-4 py-2"
         >
           <input
             onChange={handleSearchChange}
             value={query}
-            className="flex-1 px-3 py-1 bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
+            className="w-[100%] px-3 py-1 bg-transparent border-none text-white placeholder-gray-400 focus:outline-none"
             type="search"
             placeholder="Search..."
           />
@@ -68,7 +75,7 @@ const Search = () => {
           transition-all duration-500 ease-in-out transform hover:scale-105"
           >
               <button className="text-white text-lg p-3 rounded-full cursor-pointer 
-          hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110">
+          hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-110" onClick={() => handleItemClick(item)}>
                   <i className="fa-solid fa-eye"></i>
               </button>
               <button className="text-white text-lg p-3  cursor-pointer
