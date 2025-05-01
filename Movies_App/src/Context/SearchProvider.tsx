@@ -15,6 +15,7 @@ title?: string;
 name?: string;
 vote_average: number;
 poster_path: string;
+adult?: boolean;
 };
 
 type SearchOperation = {
@@ -44,9 +45,11 @@ useEffect(() => {
 
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/search/${type}?api_key=${apiKey}&query=${query}`
+                `https://api.themoviedb.org/3/search/${type}?api_key=${apiKey}&query=${query}&include_adult=false`
             );
-            setItems(response.data.results);
+            
+            const filteredResults = response.data.results.filter((item: Item) => !item.adult);
+            setItems(filteredResults);
         } catch (err) {
             console.log(`Fetching Error ${err}`);
         }

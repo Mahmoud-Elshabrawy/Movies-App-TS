@@ -26,13 +26,16 @@ const TvSeries = () => {
     const fetchingTv = async() => {
       try {
         const response = await Promise.all(
-          Categories.map(category => axios.get(`${category.url}?api_key=${apiKey}`))
+          Categories.map(category => axios.get(`${category.url}?include_adult=false&api_key=${apiKey}`))
         )
 
-        const newTvSeries: any = {}
-        response.forEach((response, idx) => {
-          newTvSeries[Categories[idx].key] = response.data.results
-        })
+        const newTvSeries: any = {};
+    response.forEach((res, idx) => {
+      const filteredResults = res.data.results.filter(
+        (item: { adult?: boolean }) => !item.adult
+      );
+      newTvSeries[Categories[idx].key] = filteredResults;
+    });
         setTvSeries(newTvSeries)
       } catch(error) {
         console.log("Error while fetching Tv Series", error);
